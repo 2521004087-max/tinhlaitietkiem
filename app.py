@@ -1,5 +1,6 @@
 import streamlit as st
 
+st.image("logo.jpg", width=150)
 # ==============================
 # CẤU HÌNH TRANG
 # ==============================
