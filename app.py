@@ -6,7 +6,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Tính Lãi Tiền Gửi Tiết Kiệm",
-    page_icon="💰",
+    page_icon="logo.jpg",
     layout="centered"
 )
 
@@ -28,7 +28,85 @@ st.write(
     "Công cụ tính toán tiền lãi theo phương pháp lãi đơn "
     "hoặc lãi kép."
 )
+# ==============================
+# ĐỀ XUẤT KHOẢN GỬI PHÙ HỢP
+# ==============================
 
+st.subheader("🎯 Đề xuất khoản gửi phù hợp")
+
+st.write(
+    "Hãy cho biết bạn thuộc nhóm đối tượng nào để hệ thống "
+    "đưa ra gợi ý về kỳ hạn và hình thức nhận lãi."
+)
+
+with st.form("form_de_xuat"):
+    doi_tuong = st.selectbox(
+        "👤 Bạn thuộc nhóm đối tượng nào?",
+        [
+            "Sinh viên / người mới bắt đầu tiết kiệm",
+            "Người đi làm, thu nhập ổn định",
+            "Gia đình có khoản tiền nhàn rỗi",
+            "Người lớn tuổi / nghỉ hưu",
+            "Kinh doanh / thu nhập không ổn định"
+        ]
+    )
+
+    nut_de_xuat = st.form_submit_button(
+        "🔍 ĐỀ XUẤT CHO TÔI",
+        use_container_width=True
+    )
+
+if nut_de_xuat:
+
+    if doi_tuong == "Sinh viên / người mới bắt đầu tiết kiệm":
+        st.success("🎓 Gợi ý cho bạn")
+        st.write("• Kỳ hạn tham khảo: **1–3 tháng**")
+        st.write("• Hình thức nhận lãi: **Cuối kỳ**")
+        st.write(
+            "💡 Lý do: Ưu tiên tính linh hoạt và có thể sử dụng "
+            "tiền khi cần."
+        )
+
+    elif doi_tuong == "Người đi làm, thu nhập ổn định":
+        st.success("💼 Gợi ý cho bạn")
+        st.write("• Kỳ hạn tham khảo: **6–12 tháng**")
+        st.write("• Hình thức nhận lãi: **Cuối kỳ**")
+        st.write(
+            "💡 Lý do: Có thu nhập ổn định nên có thể dành "
+            "một phần tiền nhàn rỗi cho kỳ hạn dài hơn."
+        )
+
+    elif doi_tuong == "Gia đình có khoản tiền nhàn rỗi":
+        st.success("👨‍👩‍👧 Gợi ý cho bạn")
+        st.write("• Kỳ hạn tham khảo: **6–12 tháng**")
+        st.write("• Hình thức nhận lãi: **Hàng quý hoặc cuối kỳ**")
+        st.write(
+            "💡 Lý do: Phù hợp với khoản tiền chưa cần sử dụng "
+            "ngay trong thời gian trung hạn."
+        )
+
+    elif doi_tuong == "Người lớn tuổi / nghỉ hưu":
+        st.success("👴 Gợi ý cho bạn")
+        st.write("• Kỳ hạn tham khảo: **3–6 tháng**")
+        st.write("• Hình thức nhận lãi: **Hàng tháng hoặc hàng quý**")
+        st.write(
+            "💡 Lý do: Có thể ưu tiên dòng tiền lãi định kỳ "
+            "để phục vụ chi tiêu."
+        )
+
+    else:
+        st.success("💼 Gợi ý cho bạn")
+        st.write("• Kỳ hạn tham khảo: **1–3 tháng**")
+        st.write("• Hình thức nhận lãi: **Cuối kỳ**")
+        st.write(
+            "💡 Lý do: Ưu tiên tính linh hoạt vì có thể cần "
+            "tiền cho hoạt động kinh doanh."
+        )
+
+    st.caption(
+        "⚠️ Đây là gợi ý tham khảo phục vụ mục đích học tập, "
+        "không phải tư vấn tài chính cá nhân."
+    )
 st.divider()
 
 
